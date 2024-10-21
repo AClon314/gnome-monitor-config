@@ -192,6 +192,10 @@ list_monitors (GError **error)
                is_builtin_display ? " BUILTIN" : "");
       if (display_name)
         g_print ("  display-name: %s\n", display_name);
+      g_print ("  connector: %s\n", cc_display_monitor_get_connector(monitor));
+      g_print ("  vendor: %s\n", cc_display_monitor_get_vendor(monitor));
+      g_print ("  product: %s\n", cc_display_monitor_get_product(monitor));
+      g_print ("  serial: %s\n", cc_display_monitor_get_serial(monitor));
 
       list_modes (monitor);
     }

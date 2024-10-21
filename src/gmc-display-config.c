@@ -106,6 +106,24 @@ cc_display_monitor_get_connector (CcDisplayMonitor *monitor)
 }
 
 const char *
+cc_display_monitor_get_vendor (CcDisplayMonitor *monitor)
+{
+  return monitor->vendor;
+}
+
+const char *
+cc_display_monitor_get_product (CcDisplayMonitor *monitor)
+{
+  return monitor->product;
+}
+
+const char *
+cc_display_monitor_get_serial (CcDisplayMonitor *monitor)
+{
+  return monitor->serial;
+}
+
+const char *
 cc_display_monitor_get_display_name (CcDisplayMonitor *monitor)
 {
   return monitor->display_name;

@@ -95,6 +95,9 @@ CcDisplayTransform cc_display_logical_monitor_get_transform (CcDisplayLogicalMon
 
 bool cc_display_monitor_is_active (CcDisplayMonitor *monitor);
 const char * cc_display_monitor_get_connector (CcDisplayMonitor *monitor);
+const char * cc_display_monitor_get_vendor (CcDisplayMonitor *monitor);
+const char * cc_display_monitor_get_product (CcDisplayMonitor *monitor);
+const char * cc_display_monitor_get_serial (CcDisplayMonitor *monitor);
 bool cc_display_monitor_is_builtin_display (CcDisplayMonitor *monitor);
 const char * cc_display_monitor_get_display_name (CcDisplayMonitor *monitor);
 
