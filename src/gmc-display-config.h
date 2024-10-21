@@ -20,7 +20,6 @@
 #ifndef _CC_DISPLAY_CONFIG_H
 #define _CC_DISPLAY_CONFIG_H
 
-#include <cairo.h>
 #include <glib.h>
 #include <stdbool.h>
 
@@ -52,6 +51,15 @@ typedef enum
 } CcDisplayTransform;
 
 typedef struct _CcDisplayState CcDisplayState;
+
+typedef struct _CcDisplayMonitorLayout
+{
+  int x;
+  int y;
+  int width;
+  int height;
+} CcDisplayMonitorLayout;
+
 typedef struct _CcDisplayMonitor CcDisplayMonitor;
 typedef struct _CcDisplayLogicalMonitor CcDisplayLogicalMonitor;
 
@@ -81,7 +89,7 @@ cc_display_mode_get_id (CcDisplayMode *mode);
 GList * cc_display_logical_monitor_get_monitors (CcDisplayLogicalMonitor *logical_monitor);
 bool cc_display_logical_monitor_is_primary (CcDisplayLogicalMonitor *logical_monitor);
 void cc_display_logical_monitor_calculate_layout (CcDisplayLogicalMonitor *logical_monitor,
-                                                  cairo_rectangle_int_t *layout);
+                                                  CcDisplayMonitorLayout *layout);
 double cc_display_logical_monitor_get_scale (CcDisplayLogicalMonitor *logical_monitor);
 CcDisplayTransform cc_display_logical_monitor_get_transform (CcDisplayLogicalMonitor *logical_monitor);
 
@@ -139,7 +147,7 @@ void cc_display_logical_monitor_config_get_position (CcDisplayLogicalMonitorConf
                                                      int *y);
 
 void cc_display_logical_monitor_config_calculate_layout (CcDisplayLogicalMonitorConfig *logical_monitor_config,
-                                                         cairo_rectangle_int_t *layout);
+                                                         CcDisplayMonitorLayout *layout);
 
 GList * cc_display_logical_monitor_config_get_monitor_configs (CcDisplayLogicalMonitorConfig *logical_monitor_config);
 

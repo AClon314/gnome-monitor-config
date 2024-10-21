@@ -1,6 +1,5 @@
 gnome = import('gnome')
 
-cairo = dependency('cairo')
 glib = dependency('glib-2.0')
 gio = dependency('gio-2.0')
 gio_unix = dependency('gio-unix-2.0')
@@ -19,4 +18,4 @@ gen_src = gnome.gdbus_codegen('gmc-dbus-display-config',
 src += gen_src
 
 executable('gnome-monitor-config', src,
-           dependencies : [ glib, gio, gio_unix, cairo ])
+           dependencies : [ glib, gio, gio_unix ])
