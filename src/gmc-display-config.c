@@ -106,6 +106,24 @@ cc_display_monitor_get_connector (CcDisplayMonitor *monitor)
 }
 
 const char *
+cc_display_monitor_get_vendor (CcDisplayMonitor *monitor)
+{
+  return monitor->vendor;
+}
+
+const char *
+cc_display_monitor_get_product (CcDisplayMonitor *monitor)
+{
+  return monitor->product;
+}
+
+const char *
+cc_display_monitor_get_serial (CcDisplayMonitor *monitor)
+{
+  return monitor->serial;
+}
+
+const char *
 cc_display_monitor_get_display_name (CcDisplayMonitor *monitor)
 {
   return monitor->display_name;
@@ -482,7 +500,7 @@ cc_display_logical_monitor_is_primary (CcDisplayLogicalMonitor *logical_monitor)
 
 void
 cc_display_logical_monitor_calculate_layout (CcDisplayLogicalMonitor *logical_monitor,
-                                             cairo_rectangle_int_t *layout)
+                                             CcDisplayMonitorLayout *layout)
 {
   CcDisplayMonitor *monitor;
 
@@ -490,7 +508,7 @@ cc_display_logical_monitor_calculate_layout (CcDisplayLogicalMonitor *logical_mo
 
   monitor = logical_monitor->monitors->data;
 
-  *layout = (cairo_rectangle_int_t) {
+  *layout = (CcDisplayMonitorLayout) {
     .x = logical_monitor->x,
     .y = logical_monitor->y,
     .width = monitor->current_mode->resolution_width,
@@ -722,7 +740,7 @@ cc_display_logical_monitor_config_get_position (CcDisplayLogicalMonitorConfig *l
 
 void
 cc_display_logical_monitor_config_calculate_layout (CcDisplayLogicalMonitorConfig *logical_monitor_config,
-                                                    cairo_rectangle_int_t *layout)
+                                                    CcDisplayMonitorLayout *layout)
 {
   CcDisplayMonitorConfig *monitor_config;
 
@@ -730,7 +748,7 @@ cc_display_logical_monitor_config_calculate_layout (CcDisplayLogicalMonitorConfi
 
   monitor_config = logical_monitor_config->monitor_configs->data;
 
-  *layout = (cairo_rectangle_int_t) {
+  *layout = (CcDisplayMonitorLayout) {
     .x = logical_monitor_config->x,
     .y = logical_monitor_config->y,
     .width = monitor_config->mode->resolution_width,

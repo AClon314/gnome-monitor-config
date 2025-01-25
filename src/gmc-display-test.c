@@ -192,13 +192,18 @@ list_monitors (GError **error)
                is_builtin_display ? " BUILTIN" : "");
       if (display_name)
         g_print ("  display-name: %s\n", display_name);
+      g_print ("  connector: %s\n", cc_display_monitor_get_connector(monitor));
+      g_print ("  vendor: %s\n", cc_display_monitor_get_vendor(monitor));
+      g_print ("  product: %s\n", cc_display_monitor_get_product(monitor));
+      g_print ("  serial: %s\n", cc_display_monitor_get_serial(monitor));
+
       list_modes (monitor);
     }
 
   for (l = cc_display_state_get_logical_monitors (state); l; l = l->next)
     {
       CcDisplayLogicalMonitor *logical_monitor = l->data;
-      cairo_rectangle_int_t layout;
+      CcDisplayMonitorLayout layout;
       bool is_primary;
       double scale;
       CcDisplayTransform transform;
@@ -472,7 +477,7 @@ print_pending_configuration (void)
   for (l = logical_monitor_configs; l; l = l->next)
     {
       CcDisplayLogicalMonitorConfig *logical_monitor_config = l->data;
-      cairo_rectangle_int_t layout;
+      CcDisplayMonitorLayout layout;
       bool is_primary;
       double scale;
       GList *monitor_configs;
